@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<title></title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<style>
+  table {
+    border-collapse: collapse;
+  }
+  th {
+    font-size: 1.2em;
+  }
+
+  table {
+    border: 1px solid;
+  }
+
+  td, th {
+    border: 1px solid;
+    padding: 10px;
+  }
+
+  td {
+    visibility: hidden;
+  }
+
+  td:not([style]) {
+    border: none;
+  }
+</style>
+<script>
+  document.oncontextmenu = function(e) {
+    e.preventDefault();
+    document.querySelector("td:first-child:not([style])").style = 'visibility: visible';
+  }
+</script>
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th> Pros </th>
+        <th> Cons </th>
+      </tr>
+    </thead>
+
+    <tr><td> name                    </td> </tr>
+    <tr><td> simple                  </td> </tr>
+    <tr><td> portable                </td> </tr>
+    <tr><td> structured              </td> </tr>
+    <tr><td> lightweight             </td> </tr>
+    <tr><td> Turing Complete         </td> </tr>
+    <tr><td> mathematical beauty     </td> </tr>
+    <tr><td> compiled + interpreted  </td> </tr>
+    <tr><td> weeds out the weaklings </td> </tr>
+  </table>

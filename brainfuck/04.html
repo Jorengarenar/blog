@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<title></title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+<style>
+  div {
+    font-family: monospace;
+    white-space: pre;
+    width: 80%;
+    font-size: 1.6vw;
+  }
+
+  div > details {
+    margin-bottom: -1em;
+    display: inline;
+  }
+</style>
+<body>
+
+  <div>
+<code>brainfuck-2.lha/README</code>:<br>
+THE LANGUAGE
+============
+
+The language 'brainfuck' knows the following commands:
+
+ Cmd  Effect                                 Equivalent in C
+ ---  ------                                 ---------------
+ <details><summary></summary>+   </details> <details><summary></summary>Increases element under pointer      </details> <details><summary></summary> array[p]++;         </details>
+ <details><summary></summary>-   </details> <details><summary></summary>Decrases element under pointer       </details> <details><summary></summary> array[p]--;         </details>
+ <details><summary></summary>&gt;</details> <details><summary></summary>   Increases pointer                 </details> <details><summary></summary>    p++;             </details>
+ <details><summary></summary>&lt;</details> <details><summary></summary>   Decreases pointer                 </details> <details><summary></summary>    p--;             </details>
+ <details><summary></summary>[   </details> <details><summary></summary>Starts loop, counter under pointer   </details> <details><summary></summary> while(array[p]) {   </details>
+ <details><summary></summary>]   </details> <details><summary></summary>Indicates end of loop                </details> <details><summary></summary> }                   </details>
+ <details><summary></summary>.   </details> <details><summary></summary>Outputs ASCII code under pointer     </details> <details><summary></summary> putchar(array[p]);  </details>
+ <details><summary></summary>,   </details> <details><summary></summary>Reads char and stores ASCII under ptr</details> <details><summary></summary> array[p]=getchar(); </details>
+<details><summary></summary>
+All other characters are ignored. The 30000 array elements and p are being
+initialized to zero at the beginning.  Now while this seems to be a pretty
+useless language, it can be proven that it can compute every solvable
+mathematical problem (if we ignore the array size limit and the executable
+size limit).
+</details>
+  </div>

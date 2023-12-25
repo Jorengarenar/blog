@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brainfuck Visualizer</title>
+  <link rel="stylesheet" href="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/css/screen.css" />
+  <script type="text/javascript" src="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/js/lib/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/js/lib/underscore-min.js"></script>
+  <script type="text/javascript" src="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/js/lib/backbone-min.js"></script>
+  <script type="text/javascript" src="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/js/interpreter.js"></script>
+  <script type="text/javascript" src="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/js/views.js"></script>
+  <script type="text/javascript" src="https://ashupk.github.io/Brainfuck/brainfuck-visualizer-master/js/models.js"></script>
+  <style>
+    body {
+      overflow: hidden;
+    }
+    textarea, #preview {
+      overflow: auto !important;
+      white-space: pre;
+      height: 28em !important;
+    }
+    #delay {
+      background-color: #DDD8;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+
+  </header>
+
+  <div id="interpreter">
+    <section class="machine">
+      <ul class="tape">
+      </ul>
+      <div class="pointer"><em></em></div>
+    </section>
+    <section class="editor">
+      <div class="actions">
+        <a class="button" href="#" id="run">Run</a>
+        <a class="button" href="#" id="first-step">Step</a>
+        <a class="button hidden" href="#" id="stop">Stop</a>
+        <a class="button hidden" href="#" id="step">Step</a>
+        <a class="button hidden" href="#" id="pause">Pause</a>
+        <a class="button hidden" href="#" id="continue">Continue</a>
+        <div id="delay-box">
+          <label for="delay">Delay</label>
+          <input id="delay" value="100" type="range" step="30" min="30" max="300"/>
+        </div>
+        <div id="optimize-box">
+          <label for="optimize">Optimize?</label>
+          <input id="optimize" type="checkbox"/>
+        </div>
+        <div id="exclaim-box">
+          <label for="exclaim">!</label>
+          <input id="exclaim" type="checkbox"/>
+        </div>
+        <div id="input-box">
+          <label>Waiting for input</label>
+          <input type="text" id="input" maxlength="1"/>
+        </div>
+      </div>
+      <div id="preview"></div>
+      <textarea id="source">
++++++ +++++             initialize counter (cell #0) to 10
+[                       use loop to set 70/100/30/10
+    > +++++ ++              add  7 to cell #1
+    > +++++ +++++           add 10 to cell #2
+    > +++                   add  3 to cell #3
+    > +                     add  1 to cell #4
+<<<< -                  decrement counter (cell #0)
+]
+> ++ .                  print 'H'
+> + .                   print 'e'
++++++ ++ .              print 'l'
+.                       print 'l'
++++ .                   print 'o'
+> ++ .                  print ' '
+<< +++++ +++++ +++++ .  print 'W'
+> .                     print 'o'
++++ .                   print 'r'
+----- - .               print 'l'
+----- --- .             print 'd'
+> + .                   print '!'
+> .                     print 'eol'</textarea>
+      <h3>Output</h3>
+      <pre id="output"></pre>
+    </section>
+  </div>
+
+  <script type="text/javascript">
+    $(function () {
+      var cells = _(27).times($.noop);
+      var tape = new Tape(cells);
+      var pointer = new Pointer();
+      new InterpreterView({
+        editor: $("#source"),
+        tape: tape,
+        pointer: pointer
+      }).render();
+    });
+  </script>
+
+</body>
+</html>
